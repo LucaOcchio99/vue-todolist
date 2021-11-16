@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    
+    <div id="app" class="container">
+        <header class="app-header">
+            <img src="https://www.boolean.careers/images/misc/logo.png" alt="">
+        </header>
+<!-- keyup.enter serve per intercettare il tasto invio dalla tastiera -->
+        <section class="new-todo">
+            <input 
+            type="text" 
+            placeholder="Nuovo Todo"
+            v-model.trim="newTodo"
+            @keyup.enter="addTodo"
+            ref="todoInput"
+            >
+
+            <button class="button"  @click="addTodo">Aggiungi</button>
+        </section>
+
+
+        <main class="todos-section">
+            <ul class="todos-list" v-if="todos.length > 0">
+               <!-- <li class="todo">
+                    <span class="text">Todo item text here</span>
+                    <i class="far fa-trash-alt delete"></i>
+
+                    <li class="todo">
+                        <span class="text completed">Todo item text here</span>
+                        <i class="far fa-trash-alt delete"></i>
+                    </li>
+                </li> -->
+<!-- usiamo il v for per generare tutti gli elemnti
+     presenti in todos -->
+
+<!-- :class={ active: isActive } la classe da mettere,
+se è true la metto altrimenti no... ci aiuta con il
+nostro completed true o false -->
+
+<!-- sapere l'indice mi serve per il remove todo come per il cambiare
+stato, da true a false e viceversa... questo perche mi serve QUALE 
+deve essere rimosso o cambiato stato-->
+                <li class="todo" v-for="(todo,index) in todos">
+                    <span 
+                    class="text"
+                    :class="{completed: todo.completed}" 
+                    @click="updateStatus(index)"
+                    >
+                        {{ todo.text }}
+                    </span>
+                    <i class="far fa-trash-alt delete"
+                       @click="removeTodo(index)"></i>
+                </li>
+            </ul>
+            <h2 v-else>Attualmente non hai creato nessun todo</h2>
+        </main>
+    </div>
+
+    <script src="./main/main.js"></script>
+</body>
+</html>

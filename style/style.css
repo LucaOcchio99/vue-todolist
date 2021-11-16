@@ -1,0 +1,110 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+/*UTILITIES*/
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.button {
+    padding: 0 30px;
+    text-transform: uppercase;
+    font-size: 14px;
+    background-color: lightgreen;
+    border: 0;
+    cursor: pointer;
+    outline: none;
+    transition: background .3s;
+}
+
+.button:hover,
+.button:focus {
+  background: #ccc;
+}
+/*HEADER*/
+.app-header {
+  margin: 30px 0;
+  text-align: center;   
+}
+
+.app-header img {
+    max-width: 300px;
+}
+
+/* NEW TODO */
+.new-todo {
+    display: flex;
+}
+
+.new-todo input{
+    flex-grow: 1;
+    height: 35px;
+    margin-right: 20px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+}
+
+.new-todo input:hover,
+.new-todo input:focus {
+    border-color: black;
+}
+
+/* TODOS SECTION */
+.todos-section {
+    margin: 40px 0;
+}
+
+.todos-list {
+    padding: 15px 30px;
+    background: #f2f2f2;
+    box-shadow: 0 15px 10px -10px rgba(0,0,0, .2);
+}
+
+.todo {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.todo:last-child {
+    border: none;
+}
+
+.todo .text {
+    flex-grow: 1;
+    padding: 0 30px;
+    position: relative;
+}
+
+.todo .text::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #000;
+    transition: background .2s;
+}
+
+/* todos completati */
+.todo .text.completed {
+    text-decoration: line-through;
+}
+
+.todo .text.completed::before {
+    background: lightgreen;
+}
+
+.todo .delete:hover {
+    color: red;
+}
